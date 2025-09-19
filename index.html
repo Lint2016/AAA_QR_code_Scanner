@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#B35A3E">
+    <link rel="icon" href="Images/aaalogo-removebg-preview.png" type="image/svg+xml">
+    <link rel="stylesheet" href="style.css">
+    <title>AAA Summit | QR Code Scanner</title>
+</head>
+<body>
+    <header class="site-header">
+      <div class="container header-inner">
+        <a class="brand" href="#" aria-label="AAA Event Home">
+          <img src="Images/aaalogo-removebg-preview.png" alt="AAA Event logo" class="brand-logo" width="40" height="40" />
+          <span class="brand-text">AAA Summit</span>
+        </a>
+        <div class="header-meta" aria-hidden="true">Check‑In</div>
+      </div>
+    </header>
+
+    <main class="site-main">
+      <div class="container">
+        <section class="scanner-card" aria-labelledby="scanner-title">
+          <h1 id="scanner-title" class="visually-hidden">QR Code Scanner</h1>
+
+          <div class="scanner-frame" role="img" aria-label="Scanner frame placeholder">
+            <div class="corner tl" aria-hidden="true"></div>
+            <div class="corner tr" aria-hidden="true"></div>
+            <div class="corner bl" aria-hidden="true"></div>
+            <div class="corner br" aria-hidden="true"></div>
+            <p class="scanner-instruction">Align the QR code within the frame</p>
+          </div>
+
+          <div class="actions">
+            <label class="btn primary" for="file-input">Upload QR Image</label>
+            <input id="file-input" class="visually-hidden" type="file" accept="image/*" capture="environment" />
+            <p class="note">No camera access or JavaScript yet. This is a styled preview for ushers.</p>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <small>&copy; 2025 All Africa Apostolic Summit.</small>
+      </div>
+    </footer>
+</body>
+</html>

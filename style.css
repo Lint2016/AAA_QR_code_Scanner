@@ -1,0 +1,185 @@
+/*
+  AAA Event — QR Code Scanner (No JavaScript)
+  Mobile-first responsive styles
+*/
+
+:root {
+  /* Warm, earthy palette inspired by the logo */
+  --bg: #1e1a16;            /* deep warm charcoal */
+  --surface: #24201b;       /* card/surface base */
+  --card: #2a251f;          /* slightly lighter surface */
+  --primary: #B35A3E;       /* terracotta */
+  --primary-600: #8F452E;   /* darker terracotta */
+  --text: #F4EFE7;          /* warm off-white */
+  --muted: #DBCDB1;         /* sand-muted text */
+  --accent: #E8D9B6;        /* sand accent */
+  --border: #3a2f28;        /* warm border */
+  --success: #2fa24f;       /* kept for future */
+  --radius: 16px;
+  --shadow: 0 10px 30px rgba(0,0,0,0.35);
+}
+
+* { box-sizing: border-box; }
+
+html, body { height: 100%; }
+
+body {
+  margin: 0;
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+  color: var(--text);
+  background:
+    radial-gradient(1100px 520px at 12% 8%, rgba(179,90,62,0.20) 0%, transparent 60%),
+    radial-gradient(900px 500px at 88% 12%, rgba(232,217,182,0.10) 0%, transparent 65%),
+    linear-gradient(180deg, #1e1a16 0%, #181511 60%, #15120f 100%) no-repeat fixed;
+  line-height: 1.5;
+}
+
+.container {
+  width: 100%;
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 22px; /* extra breathing room on small screens */
+}
+
+/* Header */
+.site-header {
+  backdrop-filter: saturate(1.2) blur(6px);
+  background: linear-gradient(180deg, rgba(36,32,27,0.85), rgba(36,32,27,0.35));
+  border-bottom: 1px solid var(--border);
+}
+
+/* Add safe-area padding in the header so the right meta label isn't tight to the edge */
+@supports (padding: max(0px)) {
+  .site-header .container {
+    padding-left: max(22px, env(safe-area-inset-left));
+    padding-right: max(22px, env(safe-area-inset-right));
+  }
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 0;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--text);
+  text-decoration: none;
+}
+
+.brand-logo { display: block; }
+
+.brand-text { font-weight: 700; letter-spacing: 0.3px; }
+
+.header-meta { color: var(--muted); font-size: 0.95rem; margin-right: 8px; }
+
+/* Main */
+.site-main { padding: 24px 0 40px; }
+
+.scanner-card {
+  background: linear-gradient(180deg, rgba(42,37,31,0.88), rgba(42,37,31,0.68));
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 20px;
+}
+
+/* Extra breathing room for header on small/medium screens */
+@media (max-width: 1024px) {
+  .header-inner { padding-left: 8px; padding-right: 8px; }
+}
+
+/* Scanner frame */
+.scanner-frame {
+  position: relative;
+  border: 2px dashed rgba(219, 205, 177, 0.35); /* sand dashed */
+  border-radius: 20px;
+  aspect-ratio: 1 / 1;
+  max-width: 520px;
+  width: 100%;
+  margin: 8px auto 16px;
+  display: grid;
+  place-items: center;
+  background:
+    radial-gradient(120px 120px at 50% 40%, rgba(179,90,62,0.12), transparent 60%),
+    linear-gradient(180deg, rgba(36,32,27,0.55), rgba(36,32,27,0.15));
+}
+
+.scanner-instruction { color: var(--muted); font-size: 0.98rem; text-align: center; margin: 0 14px; }
+
+.corner {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  border: 4px solid var(--primary); /* use terracotta for brackets */
+}
+
+.corner.tl { top: 10px; left: 10px; border-right: 0; border-bottom: 0; border-radius: 10px 0 0 0; }
+.corner.tr { top: 10px; right: 10px; border-left: 0; border-bottom: 0; border-radius: 0 10px 0 0; }
+.corner.bl { bottom: 10px; left: 10px; border-right: 0; border-top: 0; border-radius: 0 0 0 10px; }
+.corner.br { bottom: 10px; right: 10px; border-left: 0; border-top: 0; border-radius: 0 0 10px 0; }
+
+/* Actions */
+.actions { display: grid; place-items: center; gap: 10px; margin-top: 8px; }
+
+.btn {
+  -webkit-tap-highlight-color: transparent;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 18px;
+  border-radius: 12px;
+  border: 1px solid transparent;
+  background: var(--surface);
+  color: var(--text);
+  text-decoration: none;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform .04s ease, background .2s ease, border-color .2s ease, box-shadow .2s ease;
+}
+
+.btn.primary {
+  background: linear-gradient(180deg, var(--primary), var(--primary-600));
+  border-color: rgba(255,255,255,0.08);
+  box-shadow: 0 6px 18px rgba(179, 90, 62, 0.35);
+}
+
+.btn:hover { transform: translateY(-1px); }
+.btn:active { transform: translateY(0); }
+.btn:focus-visible { outline: none; box-shadow: 0 0 0 3px rgba(179,90,62,0.45), 0 6px 18px rgba(179, 90, 62, 0.35); }
+
+.note { color: var(--muted); font-size: 0.9rem; text-align: center; }
+
+/* Footer */
+.site-footer { border-top: 1px solid var(--border); background: rgba(24,20,17,0.6); margin-top: 28px; }
+.footer-inner { padding: 14px 0; color: var(--muted); text-align: center; }
+
+/* Utilities */
+.visually-hidden {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+/* Larger screens */
+@media (min-width: 768px) {
+  .scanner-card { padding: 28px; }
+  .scanner-instruction { font-size: 1.05rem; }
+}
+
+/* Wider screens can reduce edge padding a bit */
+@media (min-width: 1024px) {
+  .container { padding: 0 16px; }
+}
+
