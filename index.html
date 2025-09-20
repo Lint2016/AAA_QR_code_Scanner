@@ -20,31 +20,34 @@
     </header>
 
     <main class="site-main">
-      <div class="container">
-        <section class="scanner-card" aria-labelledby="scanner-title">
-          <h1 id="scanner-title" class="visually-hidden">QR Code Scanner</h1>
+  <div class="container">
+    <section class="scanner-card" aria-labelledby="scanner-title">
+      <h1 id="scanner-title" class="visually-hidden">QR Code Scanner</h1>
 
-          <div class="scanner-frame" role="img" aria-label="Scanner frame placeholder">
-            <div class="corner tl" aria-hidden="true"></div>
-            <div class="corner tr" aria-hidden="true"></div>
-            <div class="corner bl" aria-hidden="true"></div>
-            <div class="corner br" aria-hidden="true"></div>
-            <p class="scanner-instruction">Align the QR code within the frame</p>
-          </div>
+      <div class="scanner-frame" role="img" aria-label="Live camera scanner">
+        <video id="video" autoplay playsinline></video>
+        <canvas id="canvas" class="visually-hidden"></canvas>
 
-          <div class="actions">
-            <label class="btn primary" for="file-input">Start Scanning</label>
-            <input id="file-input" class="visually-hidden" type="file" accept="image/*" capture="environment" />
-            <p class="note">No camera access or JavaScript yet. This is a styled preview for ushers.</p>
-          </div>
-        </section>
+        <div class="corner tl" aria-hidden="true"></div>
+        <div class="corner tr" aria-hidden="true"></div>
+        <div class="corner bl" aria-hidden="true"></div>
+        <div class="corner br" aria-hidden="true"></div>
+
+        <p class="scanner-instruction">Align the QR code within the frame</p>
       </div>
-    </main>
+
+      <p id="output" class="note">Waiting for QR code...</p>
+    </section>
+  </div>
+</main>
+
 
     <footer class="site-footer">
       <div class="container footer-inner">
         <small>&copy; 2025 All Africa Apostolic Summit.</small>
       </div>
     </footer>
+    <script src="index.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jsqr@1.4.0/dist/jsQR.js"></script>
 </body>
 </html>
