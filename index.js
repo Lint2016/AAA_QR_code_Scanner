@@ -50,10 +50,6 @@ const video = document.getElementById("video");
         ctx.lineWidth = 4;
         ctx.strokeStyle = "lime";
         ctx.stroke();
-      }else{
-          const errorSound = document.getElementById("error-sound");
-       errorSound.currentTime = 0;
-       errorSound.play().catch(() => {});
       }
     }
     requestAnimationFrame(scanLoop); // keep scanning
