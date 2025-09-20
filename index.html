@@ -23,7 +23,11 @@
   <div class="container">
     <section class="scanner-card" aria-labelledby="scanner-title">
       <h1 id="scanner-title" class="visually-hidden">QR Code Scanner</h1>
-
+      <!-- Audio feedback (invisible) -->
+      <audio id="beep" src="sounds/beep.wav" preload="auto"></audio>
+      <audio id="error-sound" src="sounds/error.wav" preload="auto"></audio>
+      
+      <!-- Scanner frame -->
       <div class="scanner-frame" role="img" aria-label="Live camera scanner">
         <video id="video" autoplay playsinline></video>
         <canvas id="canvas" class="visually-hidden"></canvas>

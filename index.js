@@ -30,6 +30,15 @@ const video = document.getElementById("video");
         // ✅ Found a QR code
         output.textContent = `QR Code: ${code.data}`;
         output.style.color = "green";
+        // 🎵 Play success beep
+      const beep = document.getElementById("beep");
+      beep.currentTime = 0;   // rewind if it’s still playing
+      beep.play().catch(() => {});
+
+      // 📳 Vibrate phone (most mobile devices)
+      if (navigator.vibrate) {
+        navigator.vibrate(200); // vibrate for 200ms
+      }
 
         // Draw box around QR
         ctx.beginPath();
@@ -41,6 +50,10 @@ const video = document.getElementById("video");
         ctx.lineWidth = 4;
         ctx.strokeStyle = "lime";
         ctx.stroke();
+      }else{
+          const errorSound = document.getElementById("error-sound");
+       errorSound.currentTime = 0;
+       errorSound.play().catch(() => {});
       }
     }
     requestAnimationFrame(scanLoop); // keep scanning
